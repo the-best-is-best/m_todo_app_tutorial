@@ -9,11 +9,12 @@ class HomeView extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Home Page'),
+          title: const Text("Home View"),
           actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.calendar_today)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.language)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.calendar_today)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.language)),
           ],
           bottom: const TabBar(isScrollable: true, tabs: [
             Tab(text: 'All'),
