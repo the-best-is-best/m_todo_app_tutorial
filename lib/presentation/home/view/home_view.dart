@@ -7,17 +7,44 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: PreferredSize(
+        appBar: const PreferredSize(
             preferredSize: Size.fromHeight(100.0), child: MyAppBar()),
-        body: TabBarView(children: [
-          AllTasks(),
-          CompletedTasks(),
-          AllTasks(),
-          CompletedTasks()
-        ]),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .75,
+                  child: const TabBarView(children: [
+                    AllTasks(),
+                    CompletedTasks(),
+                    AllTasks(),
+                    CompletedTasks()
+                  ]),
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  right: 10,
+                  child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15))),
+                        onPressed: () {},
+                        child: Text("Add A Task"),
+                      )),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
