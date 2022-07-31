@@ -6,7 +6,7 @@ class CompletedTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Completed"),
+      child: Text("2"),
     );
   }
 }
