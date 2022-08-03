@@ -4,6 +4,7 @@ import 'package:m_todo_app_tutorial/presentation/home/pages/completed_tasks.dart
 import 'package:m_todo_app_tutorial/presentation/home/pages/favorite_tasks.dart';
 import 'package:m_todo_app_tutorial/presentation/home/pages/un_completed_tasks.dart';
 
+import '../../../app/components/my_elevated_button.dart';
 import '../widgets/my_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,17 +12,29 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
+    return DefaultTabController(
       length: 4,
       child: Scaffold(
-        appBar: PreferredSize(
+        appBar: const PreferredSize(
             preferredSize: Size.fromHeight(100), child: MyAppBar()),
-        body: TabBarView(children: [
-          AllTasks(),
-          CompletedTasks(),
-          UnCompletedTasks(),
-          FavoriteTasks(),
-        ]),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Stack(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.width * 75,
+                child: const TabBarView(children: [
+                  AllTasks(),
+                  CompletedTasks(),
+                  UnCompletedTasks(),
+                  FavoriteTasks(),
+                ]),
+              ),
+              const Positioned(
+                  bottom: 10, right: 10, left: 10, child: MyElevatedButton())
+            ],
+          ),
+        ),
       ),
     );
   }
