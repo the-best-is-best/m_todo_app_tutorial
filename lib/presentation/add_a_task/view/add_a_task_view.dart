@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:m_todo_app_tutorial/app/components/my_text.dart';
 
-import '../../../app/components/my_form_field.dart';
-
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
 
@@ -26,27 +24,6 @@ class _AddATaskViewState extends State<AddATaskView> {
       ),
       body: SingleChildScrollView(
           child: Padding(
-<<<<<<< HEAD
-        padding: const EdgeInsets.only(top: 16) +
-            const EdgeInsets.symmetric(horizontal: 20),
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: const [
-              BuildFormField(
-                title: "Title",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 16),
-              BuildFormField(
-                title: "Date",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-      )),
-=======
         padding: const EdgeInsets.only(top: 20) +
             const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -137,7 +114,6 @@ class MyFormField extends StatelessWidget {
           maxLines: isMultiLine ? 5 : 1,
         ),
       ],
->>>>>>> episode-5-add-a-task-ui
     );
   }
 }
