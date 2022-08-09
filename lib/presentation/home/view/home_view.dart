@@ -37,6 +37,7 @@ class HomeView extends StatelessWidget {
                   right: 10,
                   left: 10,
                   child: MyElevatedButton(
+                    title: "Add A Task",
                     onPressed: () {
                       context.push(const AddATaskView());
                     },
