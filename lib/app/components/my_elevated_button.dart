@@ -6,8 +6,10 @@ class MyElevatedButton extends StatelessWidget {
   const MyElevatedButton({
     this.width = double.infinity,
     Key? key,
+    this.onPressed,
   }) : super(key: key);
   final double width;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class MyElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
-        onPressed: () {},
+        onPressed: onPressed,
         child: const MyText(),
       ),
     );

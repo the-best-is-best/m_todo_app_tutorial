@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
+import 'package:m_todo_app_tutorial/presentation/add_a_task/view/add_a_task_view.dart';
 import 'package:m_todo_app_tutorial/presentation/home/pages/all_tasks.dart';
 import 'package:m_todo_app_tutorial/presentation/home/pages/completed_tasks.dart';
 import 'package:m_todo_app_tutorial/presentation/home/pages/favorite_tasks.dart';
@@ -22,7 +24,7 @@ class HomeView extends StatelessWidget {
           child: Stack(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.width * 75,
+                height: context.width * 75,
                 child: const TabBarView(children: [
                   AllTasks(),
                   CompletedTasks(),
@@ -30,8 +32,15 @@ class HomeView extends StatelessWidget {
                   FavoriteTasks(),
                 ]),
               ),
-              const Positioned(
-                  bottom: 10, right: 10, left: 10, child: MyElevatedButton())
+              Positioned(
+                  bottom: 10,
+                  right: 10,
+                  left: 10,
+                  child: MyElevatedButton(
+                    onPressed: () {
+                      context.push(const AddATaskView());
+                    },
+                  ))
             ],
           ),
         ),
