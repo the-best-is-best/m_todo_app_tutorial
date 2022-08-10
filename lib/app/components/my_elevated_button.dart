@@ -7,9 +7,11 @@ class MyElevatedButton extends StatelessWidget {
     this.width = double.infinity,
     Key? key,
     this.onPressed,
+    required this.title,
   }) : super(key: key);
   final double width;
   final VoidCallback? onPressed;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class MyElevatedButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
         onPressed: onPressed,
-        child: const MyText(title: "Add A Task"),
+        child: MyText(title: title),
       ),
     );
   }
