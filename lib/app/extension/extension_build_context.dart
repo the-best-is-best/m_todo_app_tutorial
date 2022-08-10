@@ -7,4 +7,18 @@ extension ExtensionBuildContext on BuildContext {
   void push(Widget secondPage) {
     Navigator.push(this, MaterialPageRoute(builder: (context) => secondPage));
   }
+
+  Future<DateTime?> showMyDatePicker() async {
+    return await showDatePicker(
+        context: this,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(
+          DateTime.now().year + 10,
+        ));
+  }
+
+  Future<TimeOfDay?> showMyTimePicker() async {
+    return await showTimePicker(context: this, initialTime: TimeOfDay.now());
+  }
 }
