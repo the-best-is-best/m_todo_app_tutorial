@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
 import '../../../app/components/my_form_field.dart';
 
 class AddATaskView extends StatefulWidget {
@@ -58,15 +60,10 @@ class _AddATaskViewState extends State<AddATaskView> {
                   controller: dateController,
                   title: "Date",
                   onTap: () async {
-                    DateTime? dateSelected = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(DateTime.now().year + 10));
+                    DateTime? dateSelected = await context.showMyDatePicker();
                     // send dateSelected Cubit
                     if (dateSelected != null) {
-                      dateController.text =
-                          DateFormat("yyyy-MM-dd").format(dateSelected);
+                      dateController.text = dateSelected.dateToString();
                     }
                   },
                   onSaved: (newValue) {},
@@ -79,8 +76,8 @@ class _AddATaskViewState extends State<AddATaskView> {
                         controller: startTimeController,
                         title: "Start Time",
                         onTap: () async {
-                          TimeOfDay? selectTime = await showTimePicker(
-                              context: context, initialTime: TimeOfDay.now());
+                          TimeOfDay? selectTime =
+                              await context.showMyTimePicker();
                           if (selectTime != null) {
                             if (!mounted) {
                               return;
@@ -98,8 +95,8 @@ class _AddATaskViewState extends State<AddATaskView> {
                         controller: endTimeController,
                         title: "End Time",
                         onTap: () async {
-                          TimeOfDay? selectTime = await showTimePicker(
-                              context: context, initialTime: TimeOfDay.now());
+                          TimeOfDay? selectTime =
+                              await context.showMyTimePicker();
                           if (selectTime != null) {
                             if (!mounted) {
                               return;

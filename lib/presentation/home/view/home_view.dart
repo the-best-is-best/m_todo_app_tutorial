@@ -40,6 +40,7 @@ class HomeView extends StatelessWidget {
                     onPressed: () {
                       context.push(const AddATaskView());
                     },
+                    title: 'Add A Task',
                   ))
             ],
           ),
