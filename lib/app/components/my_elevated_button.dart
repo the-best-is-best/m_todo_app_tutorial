@@ -22,8 +22,8 @@ class MyElevatedButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15))),
         onPressed: onPressed,
-        child: const MyText(
-          title: "Add A Task",
+        child: MyText(
+          title: title,
         ),
       ),
     );
