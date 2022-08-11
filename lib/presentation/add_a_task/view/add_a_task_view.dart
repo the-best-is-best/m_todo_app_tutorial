@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:m_todo_app_tutorial/app/components/my_elevated_button.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
 import '../../../app/components/my_form_field.dart';
 import '../../../app/components/my_text.dart';
+import '../../../domain/models/reminder_model.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
@@ -121,6 +123,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                     ),
                     const SizedBox(height: 16),
                     DropdownButtonFormField<int>(
+                        value: 0,
                         decoration: InputDecoration(
                           fillColor: Colors.grey[200],
                           filled: true,
@@ -132,10 +135,26 @@ class _AddATaskViewState extends State<AddATaskView> {
                               borderSide: const BorderSide(
                                   color: Colors.green, width: 2)),
                         ),
-                        items: [DropdownMenuItem(child: Text("none"))],
-                        onChanged: (int? value) {})
+                        items: [
+                          ...reminderList
+                              .map((e) => DropdownMenuItem<int>(
+                                  value: e.reminder,
+                                  child: MyText(
+                                    title: e.title,
+                                  )))
+                              .toList()
+                        ],
+                        onChanged: (int? value) {
+                          debugPrint(value.toString());
+                        })
                   ],
                 ),
+                const SizedBox(height: 16),
+                MyElevatedButton(
+                  title: 'Add A Task',
+                  onPressed: () {},
+                ),
+                const SizedBox(height: 16),
               ],
             ))
           ],
@@ -143,11 +162,12 @@ class _AddATaskViewState extends State<AddATaskView> {
       )),
     );
   }
-}
 
-class Reminder {
-  final int reminderTime;
-  final String title;
-
-  Reminder({required this.reminderTime, required this.title});
+  List<ReminderModel> reminderList = [
+    ReminderModel(reminder: 0, title: "None"),
+    ReminderModel(reminder: 10, title: "10 Minute Before"),
+    ReminderModel(reminder: 30, title: "30 Minute Before"),
+    ReminderModel(reminder: 60, title: "1 Hour Before"),
+    ReminderModel(reminder: 60 * 24, title: "1 Day"),
+  ];
 }
