@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
 import '../../../app/components/my_form_field.dart';
+import '../../../app/components/my_text.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
@@ -108,7 +109,33 @@ class _AddATaskViewState extends State<AddATaskView> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const MyText(
+                      title: "Reminder",
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 16),
+                    DropdownButtonFormField<int>(
+                        decoration: InputDecoration(
+                          fillColor: Colors.grey[200],
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                  color: Colors.green, width: 2)),
+                        ),
+                        items: [DropdownMenuItem(child: Text("none"))],
+                        onChanged: (int? value) {})
+                  ],
+                ),
               ],
             ))
           ],
@@ -116,4 +143,11 @@ class _AddATaskViewState extends State<AddATaskView> {
       )),
     );
   }
+}
+
+class Reminder {
+  final int reminderTime;
+  final String title;
+
+  Reminder({required this.reminderTime, required this.title});
 }
