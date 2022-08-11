@@ -164,10 +164,10 @@ class _AddATaskViewState extends State<AddATaskView> {
     );
   }
 
-  List<Reminder> reminderList = [
-    Reminder(reminder: 0, title: "None"),
-    Reminder(reminder: 30, title: "30 Minute Before"),
-    Reminder(reminder: 60, title: "60 Minute Before"),
-    Reminder(reminder: 60 * 24, title: "1 Day"),
+  List<ReminderModel> reminderList = [
+    ReminderModel(reminder: 0, title: "None"),
+    ReminderModel(reminder: 30, title: "30 Minute Before"),
+    ReminderModel(reminder: 60, title: "60 Minute Before"),
+    ReminderModel(reminder: 60 * 24, title: "1 Day"),
   ];
 }

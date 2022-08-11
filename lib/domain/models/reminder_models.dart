@@ -1,6 +1,6 @@
-class Reminder {
+class ReminderModel {
   final int reminder;
   final String title;
 
-  Reminder({required this.reminder, required this.title});
+  ReminderModel({required this.reminder, required this.title});
 }
