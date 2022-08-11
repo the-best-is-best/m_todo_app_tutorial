@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
 import '../../../app/components/my_form_field.dart';
+import '../../../app/components/my_text.dart';
+import '../../../domain/models/reminder_models.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
@@ -117,7 +119,43 @@ class _AddATaskViewState extends State<AddATaskView> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const MyText(
+                      title: "Reminder",
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 16),
+                    DropdownButtonFormField<int>(
+                        value: 0,
+                        decoration: InputDecoration(
+                          fillColor: Colors.grey[200],
+                          filled: true,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(
+                                  color: Colors.green, width: 2)),
+                        ),
+                        items: [
+                          ...reminderList
+                              .map((value) => DropdownMenuItem(
+                                    value: value.reminder,
+                                    child: Text(value.title),
+                                  ))
+                              .toList()
+                        ],
+                        onChanged: (int? value) {
+                          debugPrint(value.toString());
+                        }),
+                  ],
+                ),
               ],
             ))
           ],
@@ -125,4 +163,11 @@ class _AddATaskViewState extends State<AddATaskView> {
       )),
     );
   }
+
+  List<Reminder> reminderList = [
+    Reminder(reminder: 0, title: "None"),
+    Reminder(reminder: 30, title: "30 Minute Before"),
+    Reminder(reminder: 60, title: "60 Minute Before"),
+    Reminder(reminder: 60 * 24, title: "1 Day"),
+  ];
 }
