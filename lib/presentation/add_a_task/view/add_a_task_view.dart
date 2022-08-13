@@ -150,6 +150,23 @@ class _AddATaskViewState extends State<AddATaskView> {
                   ],
                 ),
                 const SizedBox(height: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const MyText(
+                      title: "Select Your Color",
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      width: context.width,
+                      height: 10,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
                 MyElevatedButton(
                   title: 'Add A Task',
                   onPressed: () {},
