@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/components/my_elevated_button.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
@@ -159,10 +160,56 @@ class _AddATaskViewState extends State<AddATaskView> {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 16),
-                    Container(
-                      width: context.width,
-                      height: 10,
-                      color: Colors.red,
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          barrierDismissible: false,
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: const Text("Select Your Color"),
+                              content: SingleChildScrollView(
+                                  child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          icon: const Icon(
+                                            Icons.arrow_back,
+                                            size: 30,
+                                          )),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 16),
+                                  ColorPicker(
+                                    pickerColor: Colors.red,
+                                    onColorChanged: (value) {
+                                      debugPrint(value.toString());
+                                    },
+                                  ),
+                                ],
+                              )),
+                              actions: [
+                                MyElevatedButton(
+                                  title: "Save",
+                                  onPressed: () {
+                                    // logic to save color
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        width: context.width,
+                        height: 10,
+                        color: Colors.red,
+                      ),
                     ),
                   ],
                 ),
