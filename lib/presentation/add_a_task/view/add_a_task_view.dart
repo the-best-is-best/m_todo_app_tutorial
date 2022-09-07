@@ -178,7 +178,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                       context: context,
                       barrierDismissible: false,
                       builder: (BuildContext context) => AlertDialog(
-                        title: Center(child: Text("Select Color")),
+                        title: const Center(child: Text("Select Color")),
                         content: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -187,9 +187,9 @@ class _AddATaskViewState extends State<AddATaskView> {
                                 children: [
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        context.back();
                                       },
-                                      icon: Icon(Icons.arrow_back)),
+                                      icon: const Icon(Icons.arrow_back)),
                                 ],
                               ),
                               ColorPicker(
@@ -205,7 +205,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                           MyElevatedButton(
                             title: "Save",
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              context.back();
                             },
                           ),
                         ],

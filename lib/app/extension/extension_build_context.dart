@@ -8,6 +8,10 @@ extension ExtensionBuildContext on BuildContext {
     Navigator.push(this, MaterialPageRoute(builder: (context) => secondPage));
   }
 
+  void back() {
+    Navigator.of(this).pop();
+  }
+
   Future<DateTime?> showMyDatePicker() async {
     return await showDatePicker(
         context: this,
