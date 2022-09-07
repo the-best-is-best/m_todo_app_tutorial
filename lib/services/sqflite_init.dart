@@ -2,7 +2,7 @@ import 'package:m_todo_app_tutorial/app/di.dart';
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
 
-class SqlFliteInit {
+class SqFliteInit {
   Future init() async {
     // Get a location using getDatabasesPath
     var databasesPath = await getDatabasesPath();
