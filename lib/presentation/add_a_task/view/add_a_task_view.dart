@@ -175,7 +175,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                                     children: [
                                       IconButton(
                                           onPressed: () {
-                                            Navigator.pop(context);
+                                            context.back();
                                           },
                                           icon: const Icon(
                                             Icons.arrow_back,
@@ -197,7 +197,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                                   title: "Save",
                                   onPressed: () {
                                     // logic to save color
-                                    Navigator.pop(context);
+                                    context.back();
                                   },
                                 )
                               ],
