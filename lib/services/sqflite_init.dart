@@ -3,10 +3,13 @@ import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart';
 
 class SqFliteInit {
-  Future init() async {
+  Future<void> init() async {
     // Get a location using getDatabasesPath
     var databasesPath = await getDatabasesPath();
-    String path = p.join(databasesPath, 'task.db');
+    String path = p.join(databasesPath, 'tasks.db');
+
+// Delete the database
+    await deleteDatabase(path);
 
 // open the database
     Database db = await openDatabase(path, version: 1,

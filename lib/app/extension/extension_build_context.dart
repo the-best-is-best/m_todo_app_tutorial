@@ -9,7 +9,7 @@ extension ExtensionBuildContext on BuildContext {
   }
 
   void back() {
-    Navigator.of(this).pop();
+    Navigator.pop(this);
   }
 
   Future<DateTime?> showMyDatePicker() async {
@@ -17,9 +17,7 @@ extension ExtensionBuildContext on BuildContext {
         context: this,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
-        lastDate: DateTime(
-          DateTime.now().year + 10,
-        ));
+        lastDate: DateTime(DateTime.now().year + 10));
   }
 
   Future<TimeOfDay?> showMyTimePicker() async {

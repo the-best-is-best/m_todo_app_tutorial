@@ -68,7 +68,6 @@ class _AddATaskViewState extends State<AddATaskView> {
                   title: "Date",
                   onTap: () async {
                     DateTime? dateSelected = await context.showMyDatePicker();
-
                     // send dateSelected Cubit
                     if (dateSelected != null) {
                       dateController.text = dateSelected.dateToString();
