@@ -3,10 +3,10 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
+import 'package:m_todo_app_tutorial/domain/models/reminder_model.dart';
 import '../../../app/components/my_elevated_button.dart';
 import '../../../app/components/my_form_field.dart';
 import '../../../app/components/my_text.dart';
-import '../../../domain/models/reminder_models.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
