@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'tasks_model.dart';
+part of 'task_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,52 +14,63 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TasksModel _$TasksModelFromJson(Map<String, dynamic> json) {
-  return _TasksModel.fromJson(json);
+TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
+  return _TaskModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TasksModel {
+mixin _$TaskModel {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
+  String get startTime => throw _privateConstructorUsedError;
+  String get endTime => throw _privateConstructorUsedError;
+  int get remind => throw _privateConstructorUsedError;
   int get completed => throw _privateConstructorUsedError;
   int get favorite => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TasksModelCopyWith<TasksModel> get copyWith =>
+  $TaskModelCopyWith<TaskModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TasksModelCopyWith<$Res> {
-  factory $TasksModelCopyWith(
-          TasksModel value, $Res Function(TasksModel) then) =
-      _$TasksModelCopyWithImpl<$Res>;
+abstract class $TaskModelCopyWith<$Res> {
+  factory $TaskModelCopyWith(TaskModel value, $Res Function(TaskModel) then) =
+      _$TaskModelCopyWithImpl<$Res>;
   $Res call(
       {int? id,
       String title,
       String description,
+      String date,
+      String startTime,
+      String endTime,
+      int remind,
       int completed,
       int favorite,
       String color});
 }
 
 /// @nodoc
-class _$TasksModelCopyWithImpl<$Res> implements $TasksModelCopyWith<$Res> {
-  _$TasksModelCopyWithImpl(this._value, this._then);
+class _$TaskModelCopyWithImpl<$Res> implements $TaskModelCopyWith<$Res> {
+  _$TaskModelCopyWithImpl(this._value, this._then);
 
-  final TasksModel _value;
+  final TaskModel _value;
   // ignore: unused_field
-  final $Res Function(TasksModel) _then;
+  final $Res Function(TaskModel) _then;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? date = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
+    Object? remind = freezed,
     Object? completed = freezed,
     Object? favorite = freezed,
     Object? color = freezed,
@@ -77,6 +88,22 @@ class _$TasksModelCopyWithImpl<$Res> implements $TasksModelCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: startTime == freezed
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: endTime == freezed
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      remind: remind == freezed
+          ? _value.remind
+          : remind // ignore: cast_nullable_to_non_nullable
+              as int,
       completed: completed == freezed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
@@ -94,41 +121,48 @@ class _$TasksModelCopyWithImpl<$Res> implements $TasksModelCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_TasksModelCopyWith<$Res>
-    implements $TasksModelCopyWith<$Res> {
-  factory _$$_TasksModelCopyWith(
-          _$_TasksModel value, $Res Function(_$_TasksModel) then) =
-      __$$_TasksModelCopyWithImpl<$Res>;
+abstract class _$$_TaskModelCopyWith<$Res> implements $TaskModelCopyWith<$Res> {
+  factory _$$_TaskModelCopyWith(
+          _$_TaskModel value, $Res Function(_$_TaskModel) then) =
+      __$$_TaskModelCopyWithImpl<$Res>;
   @override
   $Res call(
       {int? id,
       String title,
       String description,
+      String date,
+      String startTime,
+      String endTime,
+      int remind,
       int completed,
       int favorite,
       String color});
 }
 
 /// @nodoc
-class __$$_TasksModelCopyWithImpl<$Res> extends _$TasksModelCopyWithImpl<$Res>
-    implements _$$_TasksModelCopyWith<$Res> {
-  __$$_TasksModelCopyWithImpl(
-      _$_TasksModel _value, $Res Function(_$_TasksModel) _then)
-      : super(_value, (v) => _then(v as _$_TasksModel));
+class __$$_TaskModelCopyWithImpl<$Res> extends _$TaskModelCopyWithImpl<$Res>
+    implements _$$_TaskModelCopyWith<$Res> {
+  __$$_TaskModelCopyWithImpl(
+      _$_TaskModel _value, $Res Function(_$_TaskModel) _then)
+      : super(_value, (v) => _then(v as _$_TaskModel));
 
   @override
-  _$_TasksModel get _value => super._value as _$_TasksModel;
+  _$_TaskModel get _value => super._value as _$_TaskModel;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? title = freezed,
     Object? description = freezed,
+    Object? date = freezed,
+    Object? startTime = freezed,
+    Object? endTime = freezed,
+    Object? remind = freezed,
     Object? completed = freezed,
     Object? favorite = freezed,
     Object? color = freezed,
   }) {
-    return _then(_$_TasksModel(
+    return _then(_$_TaskModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -141,6 +175,22 @@ class __$$_TasksModelCopyWithImpl<$Res> extends _$TasksModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      startTime: startTime == freezed
+          ? _value.startTime
+          : startTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      endTime: endTime == freezed
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      remind: remind == freezed
+          ? _value.remind
+          : remind // ignore: cast_nullable_to_non_nullable
+              as int,
       completed: completed == freezed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
@@ -159,17 +209,21 @@ class __$$_TasksModelCopyWithImpl<$Res> extends _$TasksModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TasksModel implements _TasksModel {
-  const _$_TasksModel(
+class _$_TaskModel implements _TaskModel {
+  const _$_TaskModel(
       {this.id,
       required this.title,
       required this.description,
+      required this.date,
+      required this.startTime,
+      required this.endTime,
+      required this.remind,
       required this.completed,
       required this.favorite,
       required this.color});
 
-  factory _$_TasksModel.fromJson(Map<String, dynamic> json) =>
-      _$$_TasksModelFromJson(json);
+  factory _$_TaskModel.fromJson(Map<String, dynamic> json) =>
+      _$$_TaskModelFromJson(json);
 
   @override
   final int? id;
@@ -177,6 +231,14 @@ class _$_TasksModel implements _TasksModel {
   final String title;
   @override
   final String description;
+  @override
+  final String date;
+  @override
+  final String startTime;
+  @override
+  final String endTime;
+  @override
+  final int remind;
   @override
   final int completed;
   @override
@@ -186,18 +248,22 @@ class _$_TasksModel implements _TasksModel {
 
   @override
   String toString() {
-    return 'TasksModel(id: $id, title: $title, description: $description, completed: $completed, favorite: $favorite, color: $color)';
+    return 'TaskModel(id: $id, title: $title, description: $description, date: $date, startTime: $startTime, endTime: $endTime, remind: $remind, completed: $completed, favorite: $favorite, color: $color)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TasksModel &&
+            other is _$_TaskModel &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.date, date) &&
+            const DeepCollectionEquality().equals(other.startTime, startTime) &&
+            const DeepCollectionEquality().equals(other.endTime, endTime) &&
+            const DeepCollectionEquality().equals(other.remind, remind) &&
             const DeepCollectionEquality().equals(other.completed, completed) &&
             const DeepCollectionEquality().equals(other.favorite, favorite) &&
             const DeepCollectionEquality().equals(other.color, color));
@@ -210,34 +276,42 @@ class _$_TasksModel implements _TasksModel {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(date),
+      const DeepCollectionEquality().hash(startTime),
+      const DeepCollectionEquality().hash(endTime),
+      const DeepCollectionEquality().hash(remind),
       const DeepCollectionEquality().hash(completed),
       const DeepCollectionEquality().hash(favorite),
       const DeepCollectionEquality().hash(color));
 
   @JsonKey(ignore: true)
   @override
-  _$$_TasksModelCopyWith<_$_TasksModel> get copyWith =>
-      __$$_TasksModelCopyWithImpl<_$_TasksModel>(this, _$identity);
+  _$$_TaskModelCopyWith<_$_TaskModel> get copyWith =>
+      __$$_TaskModelCopyWithImpl<_$_TaskModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TasksModelToJson(
+    return _$$_TaskModelToJson(
       this,
     );
   }
 }
 
-abstract class _TasksModel implements TasksModel {
-  const factory _TasksModel(
+abstract class _TaskModel implements TaskModel {
+  const factory _TaskModel(
       {final int? id,
       required final String title,
       required final String description,
+      required final String date,
+      required final String startTime,
+      required final String endTime,
+      required final int remind,
       required final int completed,
       required final int favorite,
-      required final String color}) = _$_TasksModel;
+      required final String color}) = _$_TaskModel;
 
-  factory _TasksModel.fromJson(Map<String, dynamic> json) =
-      _$_TasksModel.fromJson;
+  factory _TaskModel.fromJson(Map<String, dynamic> json) =
+      _$_TaskModel.fromJson;
 
   @override
   int? get id;
@@ -246,6 +320,14 @@ abstract class _TasksModel implements TasksModel {
   @override
   String get description;
   @override
+  String get date;
+  @override
+  String get startTime;
+  @override
+  String get endTime;
+  @override
+  int get remind;
+  @override
   int get completed;
   @override
   int get favorite;
@@ -253,6 +335,6 @@ abstract class _TasksModel implements TasksModel {
   String get color;
   @override
   @JsonKey(ignore: true)
-  _$$_TasksModelCopyWith<_$_TasksModel> get copyWith =>
+  _$$_TaskModelCopyWith<_$_TaskModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
