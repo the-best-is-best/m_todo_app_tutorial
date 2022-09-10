@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
+import 'package:m_todo_app_tutorial/domain/models/reminder_model.dart';
+import '../../../app/components/my_elevated_button.dart';
 import '../../../app/components/my_form_field.dart';
 import '../../../app/components/my_text.dart';
-import '../../../domain/models/reminder_models.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
@@ -66,7 +68,6 @@ class _AddATaskViewState extends State<AddATaskView> {
                   title: "Date",
                   onTap: () async {
                     DateTime? dateSelected = await context.showMyDatePicker();
-
                     // send dateSelected Cubit
                     if (dateSelected != null) {
                       dateController.text = dateSelected.dateToString();
@@ -157,7 +158,73 @@ class _AddATaskViewState extends State<AddATaskView> {
                   ],
                 ),
               ],
-            ))
+            )),
+            const SizedBox(height: 16),
+            const SizedBox(height: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const MyText(
+                  title: "Select Color",
+                  textStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 16),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      useRootNavigator: true,
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Center(child: Text("Select Color")),
+                        content: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {
+                                        context.back();
+                                      },
+                                      icon: const Icon(Icons.arrow_back)),
+                                ],
+                              ),
+                              ColorPicker(
+                                pickerColor: Colors.red,
+                                onColorChanged: (color) {
+                                  debugPrint(color.toString());
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          MyElevatedButton(
+                            title: "Save",
+                            onPressed: () {
+                              context.back();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: context.width,
+                    height: 10,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            MyElevatedButton(
+              title: 'Add A Task',
+              onPressed: () {},
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       )),
