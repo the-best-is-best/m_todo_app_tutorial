@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_todo_app_tutorial/app/cubit/app_state.dart';
 import 'package:m_todo_app_tutorial/domain/models/task_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -6,6 +8,10 @@ import 'package:sqflite/sqflite.dart';
 class AppCubit extends Cubit<AppState> {
   final Database db;
   AppCubit(this.db) : super(InitAppState());
+
+  static AppCubit get(BuildContext context) =>
+      BlocProvider.of<AppCubit>(context);
+
   TaskModel taskFreezed = const TaskModel(
       title: '',
       date: '',
@@ -34,6 +40,10 @@ class AppCubit extends Cubit<AppState> {
 
   void addendTime(String endTime) {
     taskFreezed = taskFreezed.copyWith(title: endTime);
+  }
+
+  void addReminder(int remind) {
+    taskFreezed = taskFreezed.copyWith(remind: remind);
   }
 
   void addColor(String color) {

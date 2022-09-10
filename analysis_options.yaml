@@ -29,7 +29,7 @@ linter:
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
-   #unnecessary_this: false 
+   unnecessary_this: false 
 analyzer:
   errors:
     invalid_annotation_target: ignore
