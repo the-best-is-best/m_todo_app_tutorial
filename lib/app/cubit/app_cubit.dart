@@ -2,6 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_todo_app_tutorial/app/cubit/app_state.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_string.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_time_of_day.dart';
 import 'package:m_todo_app_tutorial/domain/models/task_model.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -47,5 +50,24 @@ class AppCubit extends Cubit<AppState> {
 
   void addRemind(int remind) {
     taskFreezed = taskFreezed.copyWith(remind: remind);
+  }
+
+  String? startTimeValidation() {
+    if (taskFreezed.date.toDate().isCurrentDate()) {
+      if (taskFreezed.startTime.toTime().isBeforeCurrentTime()) {
+        return "Start Time Less than Time Now";
+      }
+    }
+    return null;
+  }
+
+  String? endTimeValidation() {
+    if (taskFreezed.startTime
+        .toTime()
+        .isAfterAnotherTime(taskFreezed.endTime.toTime())) {
+      return "End Time Less than Start Now";
+    } else {
+      return null;
+    }
   }
 }

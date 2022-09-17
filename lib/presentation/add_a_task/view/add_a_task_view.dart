@@ -104,9 +104,7 @@ class _AddATaskViewState extends State<AddATaskView> {
                         if (dateSelected != null) {
                           dateController.text = dateSelected.dateToString();
                         }
-                      },
-                      onSaved: (date) {
-                        appCubit.addDate(date ?? "");
+                        appCubit.addDate(dateController.text);
                       },
                     ),
                     const SizedBox(height: 16),
@@ -129,7 +127,9 @@ class _AddATaskViewState extends State<AddATaskView> {
                                 appCubit.addStartTime(startTimeController.text);
                               }
                             },
-                            validator: (value) {},
+                            validator: (value) {
+                              return appCubit.startTimeValidation();
+                            },
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -146,9 +146,13 @@ class _AddATaskViewState extends State<AddATaskView> {
                                 }
                                 endTimeController.text =
                                     selectTime.format(context);
+
+                                appCubit.addendTime(endTimeController.text);
                               }
                             },
-                            onSaved: (newValue) {},
+                            validator: (value) {
+                              return appCubit.endTimeValidation();
+                            },
                           ),
                         ),
                       ],
