@@ -1,7 +1,7 @@
-import 'package:intl/intl.dart';
+import '../constant/constant.dart';
 
 extension ExtensionDateTime on DateTime {
   String dateToString() {
-    return DateFormat("yyyy-MM-dd").format(this);
+    return Constant.originalDateFormat.format(this);
   }
 }

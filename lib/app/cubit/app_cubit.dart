@@ -1,9 +1,12 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_todo_app_tutorial/app/cubit/app_state.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_time_of_day.dart';
+import 'package:m_todo_app_tutorial/app/extension/string_extensions.dart';
 import 'package:m_todo_app_tutorial/domain/models/task_model.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../constant/constant.dart';
 
 class AppCubit extends Cubit<AppState> {
   final Database db;
@@ -35,11 +38,12 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void addStartTime(String startTime) {
+    print(startTime);
     taskFreezed = taskFreezed.copyWith(startTime: startTime);
   }
 
   void addendTime(String endTime) {
-    taskFreezed = taskFreezed.copyWith(title: endTime);
+    taskFreezed = taskFreezed.copyWith(endTime: endTime);
   }
 
   void addReminder(int remind) {
@@ -48,5 +52,22 @@ class AppCubit extends Cubit<AppState> {
 
   void addColor(String color) {
     taskFreezed = taskFreezed.copyWith(color: color);
+  }
+
+  String? isStartTimeValid() {
+    if (taskFreezed.date.toDate() ==
+        Constant.originalDateFormat.parse(DateTime.now().toString())) {
+      if (taskFreezed.startTime.toTime().isBeforeTimeNow()) {
+        return "Time Start Less Than Time Now";
+      }
+    }
+
+    if (taskFreezed.startTime
+        .toTime()
+        .isAfterAnotherTime(taskFreezed.endTime.toTime())) {
+      return "Time Start After Than End Time";
+    }
+
+    return null;
   }
 }

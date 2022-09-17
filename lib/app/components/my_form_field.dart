@@ -20,7 +20,6 @@ class MyFormField extends StatelessWidget {
   final bool isMultiLine;
   final TextInputType? textInputType;
   final TextEditingController? controller;
-
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -9,6 +9,7 @@ import 'package:m_todo_app_tutorial/domain/models/reminder_model.dart';
 import '../../../app/components/my_elevated_button.dart';
 import '../../../app/components/my_form_field.dart';
 import '../../../app/components/my_text.dart';
+import '../../../app/constant/constant.dart';
 
 class AddATaskView extends StatefulWidget {
   const AddATaskView({Key? key}) : super(key: key);
@@ -29,14 +30,18 @@ class _AddATaskViewState extends State<AddATaskView> {
     dateController = TextEditingController();
     startTimeController = TextEditingController();
     endTimeController = TextEditingController();
-    dateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
-    startTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
-    endTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
 
-    dateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
+    AppCubit appCubit = AppCubit.get(context);
+
+    dateController.text = Constant.originalDateFormat.format(DateTime.now());
+    appCubit.addDate(dateController.text);
+
     startTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
+    appCubit.addStartTime(startTimeController.text);
+
     endTimeController.text = DateFormat("hh:mm a")
         .format(DateTime.now().add(const Duration(minutes: 10)));
+    appCubit.addendTime(endTimeController.text);
 
     super.initState();
   }
@@ -131,10 +136,11 @@ class _AddATaskViewState extends State<AddATaskView> {
                               if (timeSelected != null) {
                                 startTimeController.text =
                                     timeSelected.format(context);
+                                appCubit.addStartTime(startTimeController.text);
                               }
                             },
-                            onSaved: (newValue) {
-                              appCubit.addStartTime(newValue ?? "");
+                            validator: (value) {
+                              return appCubit.isStartTimeValid();
                             },
                           ),
                         ),
