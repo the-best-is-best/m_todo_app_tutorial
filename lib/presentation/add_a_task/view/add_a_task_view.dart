@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:m_todo_app_tutorial/app/components/my_elevated_button.dart';
+import 'package:m_todo_app_tutorial/app/constant/constant.dart';
 import 'package:m_todo_app_tutorial/app/cubit/app_cubit.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_build_context.dart';
 import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
@@ -29,10 +30,18 @@ class _AddATaskViewState extends State<AddATaskView> {
     startTimeController = TextEditingController();
     endTimeController = TextEditingController();
 
-    dateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
-    startTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
-    endTimeController.text = DateFormat("hh:mm a")
+    AppCubit appCubit = AppCubit.get(context);
+
+    dateController.text = Constant.originalDateFormat.format(DateTime.now());
+    appCubit.addDate(dateController.text);
+
+    startTimeController.text =
+        Constant.originalTimeFormat.format(DateTime.now());
+    appCubit.addStartTime(startTimeController.text);
+
+    endTimeController.text = Constant.originalTimeFormat
         .format(DateTime.now().add(const Duration(minutes: 10)));
+    appCubit.addendTime(endTimeController.text);
 
     super.initState();
   }
@@ -116,9 +125,11 @@ class _AddATaskViewState extends State<AddATaskView> {
                                 }
                                 startTimeController.text =
                                     selectTime.format(context);
+
+                                appCubit.addStartTime(startTimeController.text);
                               }
                             },
-                            onSaved: (newValue) {},
+                            validator: (value) {},
                           ),
                         ),
                         const SizedBox(width: 16),

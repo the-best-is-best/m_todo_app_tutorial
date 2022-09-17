@@ -38,7 +38,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void addendTime(String endTime) {
-    taskFreezed = taskFreezed.copyWith(title: endTime);
+    taskFreezed = taskFreezed.copyWith(endTime: endTime);
   }
 
   void addColor(String color) {
