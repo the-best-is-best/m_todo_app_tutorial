@@ -43,7 +43,7 @@ class MyFormField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: Colors.green, width: 2)),
           ),
-          onSaved: (String? val) {},
+          onSaved: onSaved,
           onTap: onTap,
           validator: validator,
           minLines: isMultiLine ? 3 : null,
