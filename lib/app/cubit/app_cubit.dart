@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_todo_app_tutorial/app/cubit/app_state.dart';
@@ -8,12 +9,28 @@ import 'package:sqflite/sqflite.dart';
 
 import '../constant/constant.dart';
 
+=======
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:m_todo_app_tutorial/app/cubit/app_state.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_date_time.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_string.dart';
+import 'package:m_todo_app_tutorial/app/extension/extension_time_of_day.dart';
+import 'package:m_todo_app_tutorial/domain/models/task_model.dart';
+import 'package:sqflite/sqflite.dart';
+
+>>>>>>> episode-15-validation-3
 class AppCubit extends Cubit<AppState> {
   final Database db;
   AppCubit(this.db) : super(InitAppState());
 
+<<<<<<< HEAD
   static AppCubit get(BuildContext context) =>
       BlocProvider.of<AppCubit>(context);
+=======
+  static AppCubit get(BuildContext context) => BlocProvider.of(context);
+>>>>>>> episode-15-validation-3
 
   TaskModel taskFreezed = const TaskModel(
       title: '',
@@ -38,7 +55,10 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void addStartTime(String startTime) {
+<<<<<<< HEAD
     print(startTime);
+=======
+>>>>>>> episode-15-validation-3
     taskFreezed = taskFreezed.copyWith(startTime: startTime);
   }
 
@@ -46,14 +66,18 @@ class AppCubit extends Cubit<AppState> {
     taskFreezed = taskFreezed.copyWith(endTime: endTime);
   }
 
+<<<<<<< HEAD
   void addReminder(int remind) {
     taskFreezed = taskFreezed.copyWith(remind: remind);
   }
 
+=======
+>>>>>>> episode-15-validation-3
   void addColor(String color) {
     taskFreezed = taskFreezed.copyWith(color: color);
   }
 
+<<<<<<< HEAD
   String? isStartTimeValid() {
     if (taskFreezed.date.toDate() ==
         Constant.originalDateFormat.parse(DateTime.now().toString())) {
@@ -69,5 +93,28 @@ class AppCubit extends Cubit<AppState> {
     }
 
     return null;
+=======
+  void addRemind(int remind) {
+    taskFreezed = taskFreezed.copyWith(remind: remind);
+  }
+
+  String? startTimeValidation() {
+    if (taskFreezed.date.toDate().isCurrentDate()) {
+      if (taskFreezed.startTime.toTime().isBeforeCurrentTime()) {
+        return "Start Time Less than Time Now";
+      }
+    }
+    return null;
+  }
+
+  String? endTimeValidation() {
+    if (taskFreezed.startTime
+        .toTime()
+        .isAfterAnotherTime(taskFreezed.endTime.toTime())) {
+      return "End Time Less than Start Now";
+    } else {
+      return null;
+    }
+>>>>>>> episode-15-validation-3
   }
 }
